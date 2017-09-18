@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const config = {
-  apiKey: "AIzaSyBJc_bqk13PnAyx3wPTk3cyw-iOxc__ayI",
-  authDomain: "namoproject-e5062.firebaseapp.com",
-  databaseURL: "https://namoproject-e5062.firebaseio.com",
-  projectId: "namoproject-e5062",
-  storageBucket: "namoproject-e5062.appspot.com",
-  messagingSenderId: "515394613668"
+  apiKey: "AIzaSyBMiqNNTUIlI7n8fKl-mqBW7s3IgVgbVd4",
+  authDomain: "my-first-react-app-349a9.firebaseapp.com",
+  databaseURL: "https://my-first-react-app-349a9.firebaseio.com",
+  projectId: "my-first-react-app-349a9",
+  storageBucket: "my-first-react-app-349a9.appspot.com",
+  messagingSenderId: "540799648562"
 }
 
 const auth = firebase.auth
