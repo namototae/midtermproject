@@ -38,17 +38,6 @@ function pushAnswer ({ sender, answer, sentAt }) {
 
 }
 function pushChat ({ sender, message, sentAt }) { // Add chat
-  /*
-    chatlog: [
-      {
-        sender: String,
-        photoURL: String,
-        message: String,
-        sentAt: Date
-      },
-      ...
-    ]
-  */
   const ref = firebase.database().ref('/chatlog')
   return ref.push({ sender, message, sentAt })
 }

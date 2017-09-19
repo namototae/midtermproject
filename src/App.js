@@ -67,7 +67,7 @@ class App extends Component {
               render={(props) => <About {...props} />}
               path="/about" />
             <Route
-              render={(props) => <RandomExam {...props} />}
+              render={(props) => <RandomExam user={this.state.user} {...props} />}
               path="/random" />
             <Route
               render={(props) => <Map {...props} />}

@@ -37,7 +37,7 @@ class RandomExam extends Component {
           displayName: this.props.user && this.props.user.displayName,
           photoURL: this.props.user && this.props.user.photoURL
         },
-        answer: 'true',
+        answer: '🍀🍀🍀🍀🍀🍀ว้าวเดาถูกนะจ๊ะ ให้+20แต้มบุญ👌🍀🍀🍀🍀🍀🍀',
         sentAt: new Date().getTime()
       })
     }
@@ -47,7 +47,7 @@ class RandomExam extends Component {
           displayName: this.props.user && this.props.user.displayName,
           photoURL: this.props.user && this.props.user.photoURL
         },
-        answer: 'false',
+        answer: '🐦🐦🐦🐦🐦🐦นกนะจ๊ะ ให้+5แต้มบุญ👌🐦🐦🐦🐦🐦🐦',
         sentAt: new Date().getTime()
       })
 
@@ -76,7 +76,7 @@ class RandomExam extends Component {
     .on('value', (snapshot) => {
       console.log(snapshot.val())
       this.setState({
-        chatLog: snapshot.val()
+        answerLog: snapshot.val()
       })
     }
   )
@@ -126,19 +126,19 @@ class RandomExam extends Component {
         </div>
         <br/>
         <div>
-          <h4>Result: {this.state.message}</h4>
+        
  
-          <div> คำตอบนะจ๊ะ : {this.state.answers[done]}</div>
+          {/* <div> คำตอบนะจ๊ะ : {this.state.answers[done]}</div>
           <div>ดิ่งไปแล้ว: {done} ข้อ</div>
           <div>ถูก: {corrects} ข้อ</div>
           <div>ความโชคดี: {luckiness} %</div>
-          <div> คุณตอบ :{this.state.yourChoice} </div>
+          <div> คุณตอบ :{this.state.yourChoice} </div> */}
           
         </div>
        
          
               
-        <div className="chatFeed">
+        <div className="answerFeed">
           { this.state.answerLog && Object.keys(this.state.answerLog).reverse().map((key, i) =>
               <div key={i}>
                 { this.state.answerLog[key].sender &&
