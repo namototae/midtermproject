@@ -8,43 +8,78 @@ class RandomExam extends Component {
     answers: [], // [0, 3, 2, 0, 1, 3, 1, 2, 0, ...]
     userAnswers: [],
     message: null,
-    yourChoice: null,
-    chatLog: {}
+    answerLog: {},
+    currentAnswer: 0
     
   }
 
-  _randomAnswers (num) {
-    let answers = []
-    for (let i = 0; i < num; i++) {
-      // 0, 1, 2, 3
-      let random = Math.floor(Math.random() * (4 - 0) + 0)
-      answers.push(random)
-    }
-    this.setState({ answers: answers })
-  }
+  // _randomAnswers (num) {
+  //   let answers = this.state.answers
+  //   for (let i = 0; i < num; i++) {
+  //     // 0, 1, 2, 3
+  //     let random = Math.floor(Math.random() * (4 - 0) + 0)
+  //     answers.push(random)
+  //   }
+  //   this.setState({ answers: answers })
+  // }
 
  
 
 
   _select (choice) {
     // console.log(choice)
-    let currentUserAnswers = this.state.userAnswers
-    currentUserAnswers.push(choice)
-    
-     
-    this.setState({
-      userAnswers: currentUserAnswers
-    })
-    this.setState({yourChoice: choice})
-    // console.log(this.state.userAnswers)
-    this.setState({chatLog: choice})
+    let random = Math.floor(Math.random() * 4)
+    this.setState({ currentAnswer: random })
 
+    if(choice === this.state.currentAnswer){
+      FBase.pushAnswer({
+        sender: {
+          displayName: this.props.user && this.props.user.displayName,
+          photoURL: this.props.user && this.props.user.photoURL
+        },
+        answer: 'true',
+        sentAt: new Date().getTime()
+      })
+    }
+    else{
+      FBase.pushAnswer({
+        sender: {
+          displayName: this.props.user && this.props.user.displayName,
+          photoURL: this.props.user && this.props.user.photoURL
+        },
+        answer: 'false',
+        sentAt: new Date().getTime()
+      })
+
+    }
+
+     
+
+
+
+    // let currentUserAnswers = this.state.userAnswers
+    // currentUserAnswers.push(choice)
+  
+ 
+    // this.setState({
+    //   userAnswers: currentUserAnswers
+    // })
+    // this.setState({yourChoice: choice})
+    // console.log(this.state.userAnswers)
   }
+
 
   
 
   componentDidMount() {
-    this._randomAnswers(20)
+    FBase.getAnswerLog()
+    .on('value', (snapshot) => {
+      console.log(snapshot.val())
+      this.setState({
+        chatLog: snapshot.val()
+      })
+    }
+  )
     
   }
 
@@ -53,8 +88,6 @@ class RandomExam extends Component {
     // Calculate correct choices
     let done = this.state.userAnswers.length
     let corrects = 0
-    
-    
    
 
     // เทียบคำตอบที User ตอบ กับเฉลยที่ gen ไว้ตอนแรก
@@ -63,15 +96,16 @@ class RandomExam extends Component {
 
       if (x === this.state.answers[index]) {
         // If correct
-        this.setState({
-          message: 'Correct!'
-        })
+        // this.setState({
+        //   message: 'Correct!'
+        // })
+        
         corrects = corrects + 1 
       } else {
         // If incorrect
-        this.setState({
-          message: 'Wrong!'
-        })
+        // this.setState({
+        //   message: 'Wrong!'
+        // })
       }
     })
     // คำนวน % ความโชคดี
@@ -98,7 +132,44 @@ class RandomExam extends Component {
           <div>ดิ่งไปแล้ว: {done} ข้อ</div>
           <div>ถูก: {corrects} ข้อ</div>
           <div>ความโชคดี: {luckiness} %</div>
-          <div>คำตอบของ {this.state.chatLog} คือ :{this.state.yourChoice} </div>
+          <div> คุณตอบ :{this.state.yourChoice} </div>
+          
+        </div>
+       
+         
+              
+        <div className="chatFeed">
+          { this.state.answerLog && Object.keys(this.state.answerLog).reverse().map((key, i) =>
+              <div key={i}>
+                { this.state.answerLog[key].sender &&
+                  <img
+                    src={this.state.answerLog[key].sender.photoURL}
+                    style={{ 
+                      width: 32, 
+                      height: 32, 
+                      borderRadius: '50%', 
+                      marginRight: 5,
+                      verticalAlign: 'sub'
+                    }} 
+                  />
+                }
+                { !this.state.answerLog[key].sender &&
+                  <span className="is-size-4">👮</span>
+                }
+                <span className="is-size-4"> {this.state.answerLog[key].answer}</span>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="is-size-7 has-text-grey-lighter">
+                  <i className="fa fa-send is-inline"></i>
+                  &nbsp;
+                  {moment(this.state.answerLog[key].sentAt).fromNow()}
+                </span>
+              </div>
+            )
+          }
+    
+                
+                
+            
         </div>
       </div>
     )
