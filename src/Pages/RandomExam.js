@@ -30,14 +30,14 @@ class RandomExam extends Component {
     // console.log(choice)
     let random = Math.floor(Math.random() * 4)
     this.setState({ currentAnswer: random })
-
+    
     if(choice === this.state.currentAnswer){
       FBase.pushAnswer({
         sender: {
           displayName: this.props.user && this.props.user.displayName,
           photoURL: this.props.user && this.props.user.photoURL
         },
-        answer: '🍀🍀🍀🍀🍀🍀ว้าวเดาถูกนะจ๊ะ ให้+20แต้มบุญ👌🍀🍀🍀🍀🍀🍀',
+        answer: '🍀🍀🍀🍀🍀🍀เดาถูกนะจ๊ะ ให้+20แต้มบุญ👌🍀🍀🍀🍀🍀🍀',
         sentAt: new Date().getTime()
       })
     }
@@ -77,6 +77,7 @@ class RandomExam extends Component {
       console.log(snapshot.val())
       this.setState({
         answerLog: snapshot.val()
+        
       })
     }
   )
@@ -88,6 +89,7 @@ class RandomExam extends Component {
     // Calculate correct choices
     let done = this.state.userAnswers.length
     let corrects = 0
+    
    
 
     // เทียบคำตอบที User ตอบ กับเฉลยที่ gen ไว้ตอนแรก
@@ -118,11 +120,13 @@ class RandomExam extends Component {
           Random Exam
         </h1>
         <div>
-          <h2>ข้อที่: {this.state.userAnswers.length + 1}</h2>
+          <h2>ข้อนี้ตอบอะไรลองเดาดูสิ</h2>
+          
           <button onClick={() => this._select(0)} className="button">ก.</button>
           <button onClick={() => this._select(1)} className="button">ข.</button>
           <button onClick={() => this._select(2)} className="button">ค.</button>
           <button onClick={() => this._select(3)} className="button">ง.</button>
+          <h2>ตอบ   {this.state.currentAnswer}</h2>
         </div>
         <br/>
         <div>

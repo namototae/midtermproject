@@ -58,17 +58,17 @@ class App extends Component {
             />
             <div style={{ height: 20 }}></div>
             <Route
+              render={(props) => <RandomExam user={this.state.user} {...props} />}
+              path="/" />
+            <Route
               render={() => 
                 <Chat user={this.state.user} />
               }
-              path="/" 
+              path="/chat" 
               exact />
             <Route
               render={(props) => <About {...props} />}
               path="/about" />
-            <Route
-              render={(props) => <RandomExam user={this.state.user} {...props} />}
-              path="/random" />
             <Route
               render={(props) => <Map {...props} />}
               path="/map" />
