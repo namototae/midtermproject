@@ -20,7 +20,6 @@ class RandomExam extends Component {
     result :null,
     status : null,
     baka: null,
-    
   }
 
   
