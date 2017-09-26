@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import * as FBase from '../services/firebase'
 import moment from 'moment'
 
+const numToCharacter = ['ก', 'ข', 'ค', 'ง']
+
+
 class RandomExam extends Component {
 
   state = {
@@ -9,67 +12,99 @@ class RandomExam extends Component {
     userAnswers: [],
     message: null,
     answerLog: {},
-    currentAnswer: 0
+    currentAnswer: 0,
+    correct : 0,
+    exam :0,
+    Luckiness :0,
+    character: null,
+    result :null,
+    status : null,
+    baka: null,
     
   }
 
-  // _randomAnswers (num) {
-  //   let answers = this.state.answers
-  //   for (let i = 0; i < num; i++) {
-  //     // 0, 1, 2, 3
-  //     let random = Math.floor(Math.random() * (4 - 0) + 0)
-  //     answers.push(random)
-  //   }
-  //   this.setState({ answers: answers })
-  // }
-
- 
-
-
+  
   _select (choice) {
-    // console.log(choice)
-    let random = Math.floor(Math.random() * 4)
-    this.setState({ currentAnswer: random })
+    const random = Math.floor(Math.random() * 4)
+    console.log(random, choice)
 
-    if(choice === this.state.currentAnswer){
-      FBase.pushAnswer({
-        sender: {
-          displayName: this.props.user && this.props.user.displayName,
-          photoURL: this.props.user && this.props.user.photoURL
-        },
-        answer: '🍀🍀🍀🍀🍀🍀ว้าวเดาถูกนะจ๊ะ ให้+20แต้มบุญ👌🍀🍀🍀🍀🍀🍀',
-        sentAt: new Date().getTime()
+    if(choice === random){
+      this.setState({
+        correct: this.state.correct+1,
+        exam: this.state.exam+1,
+        currentAnswer: random,
+        character: numToCharacter[random],
+        Luckiness: (this.state.correct+1)/(this.state.exam+1)*100.0 || 0,
+        result: "🍀",
+        
+        
       })
+      
+      // FBase.pushAnswer({
+      //   sender: {
+      //     displayName: this.props.user && this.props.user.displayName,
+      //     photoURL: this.props.user && this.props.user.photoURL
+      //   },
+      //   answer: this.state.Luckiness,
+      //   sentAt: new Date().getTime()
+      // })
     }
     else{
+      
+      // FBase.pushAnswer({
+      //   sender: {
+      //     displayName: this.props.user && this.props.user.displayName,
+      //     photoURL: this.props.user && this.props.user.photoURL
+      //   },
+      //   answer: this.state.Luckiness,
+      //   sentAt: new Date().getTime()
+      // })
+
+      this.setState({ 
+        currentAnswer: random,
+        exam: this.state.exam+1,
+        character: numToCharacter[random],
+        Luckiness: (this.state.correct)/(this.state.exam+1)*100.0 || 0,
+        result: " 🐦",
+      
+        
+      })
+    }
+ 
+   
+    this.check()
+    
+    
+  }
+ 
+  
+
+  
+  check(){
+    if(this.state.exam===5){
+      alert('หยุด!!!!!!!!!!!!!!!!!! 5 ข้อพอนะจ๊ะ');
+     this.setState({
+       Luckiness:0,
+       exam:0,
+       correct:0,
+      character:"",
+      result:"",
+      
+    })
+      
       FBase.pushAnswer({
         sender: {
           displayName: this.props.user && this.props.user.displayName,
           photoURL: this.props.user && this.props.user.photoURL
         },
-        answer: '🐦🐦🐦🐦🐦🐦นกนะจ๊ะ ให้+5แต้มบุญ👌🐦🐦🐦🐦🐦🐦',
+        luckiness: this.state.Luckiness,
         sentAt: new Date().getTime()
       })
-
     }
-
-     
-
-
-
-    // let currentUserAnswers = this.state.userAnswers
-    // currentUserAnswers.push(choice)
-  
- 
-    // this.setState({
-    //   userAnswers: currentUserAnswers
-    // })
-    // this.setState({yourChoice: choice})
-    // console.log(this.state.userAnswers)
+   
   }
 
-
-  
+ 
 
   componentDidMount() {
     FBase.getAnswerLog()
@@ -77,6 +112,7 @@ class RandomExam extends Component {
       console.log(snapshot.val())
       this.setState({
         answerLog: snapshot.val()
+        
       })
     }
   )
@@ -84,61 +120,42 @@ class RandomExam extends Component {
   }
 
   render() {
-
-    // Calculate correct choices
-    let done = this.state.userAnswers.length
-    let corrects = 0
-   
-
-    // เทียบคำตอบที User ตอบ กับเฉลยที่ gen ไว้ตอนแรก
-    this.state.userAnswers.forEach((x, index) => {
-      console.log(`เทียบคำตอบ ข้อที่: ${index} user ตอบ ${x} / เฉลย: ${this.state.answers[index]}`)
-
-      if (x === this.state.answers[index]) {
-        // If correct
-        // this.setState({
-        //   message: 'Correct!'
-        // })
-        
-        corrects = corrects + 1 
-      } else {
-        // If incorrect
-        // this.setState({
-        //   message: 'Wrong!'
-        // })
-      }
-    })
-    // คำนวน % ความโชคดี
-    let luckiness = (corrects/this.state.answers.length) * 100
-    
-
     return (
       <div className="content">
         <h1 className="title">
           Random Exam
         </h1>
         <div>
-          <h2>ข้อที่: {this.state.userAnswers.length + 1}</h2>
+          <h2>ลองดิ่งข้อสอบดูซิมี5ข้อ</h2>
+          <p> ตอบไป  {this.state.exam} ข้อแล้ว</p>
+          
           <button onClick={() => this._select(0)} className="button">ก.</button>
           <button onClick={() => this._select(1)} className="button">ข.</button>
           <button onClick={() => this._select(2)} className="button">ค.</button>
           <button onClick={() => this._select(3)} className="button">ง.</button>
+          
+          <h2>เฉลย : {this.state.character} </h2>
+          <p> เดาถูก : {this.state.correct} </p>
+          <h2>ความโชคดีของคุณ : {this.state.Luckiness} %</h2>
+          <h4> {this.state.result} </h4>
         </div>
         <br/>
         <div>
         
  
-          {/* <div> คำตอบนะจ๊ะ : {this.state.answers[done]}</div>
-          <div>ดิ่งไปแล้ว: {done} ข้อ</div>
-          <div>ถูก: {corrects} ข้อ</div>
-          <div>ความโชคดี: {luckiness} %</div>
-          <div> คุณตอบ :{this.state.yourChoice} </div> */}
+        
           
         </div>
        
          
               
         <div className="answerFeed">
+      
+
+
+
+
+
           { this.state.answerLog && Object.keys(this.state.answerLog).reverse().map((key, i) =>
               <div key={i}>
                 { this.state.answerLog[key].sender &&
@@ -156,7 +173,7 @@ class RandomExam extends Component {
                 { !this.state.answerLog[key].sender &&
                   <span className="is-size-4">👮</span>
                 }
-                <span className="is-size-4"> {this.state.answerLog[key].answer}</span>
+                <span className="is-size-4"> คุณมีดวงในการเดาข้อสอบ{this.state.answerLog[key].luckiness}% {this.state.status}</span>
                 <span>&nbsp;&nbsp;&nbsp;</span>
                 <span className="is-size-7 has-text-grey-lighter">
                   <i className="fa fa-send is-inline"></i>

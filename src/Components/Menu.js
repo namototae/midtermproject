@@ -23,6 +23,7 @@ class Menu extends React.Component {
             <p className="level-item"><Link to="/about">🍑 About</Link></p>
             <p className="level-item"><Link to="/map">🗺 Map</Link></p>
             <p className="level-item"><Link to="/random">🌈 Random</Link></p>
+            <p className="level-item"><Link to="/mini">🐙 Challenge</Link></p>
             <p className="level-item">
               {/* if... then... */}
               { !this.props.user &&

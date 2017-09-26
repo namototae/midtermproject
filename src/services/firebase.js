@@ -32,9 +32,9 @@ function autoLogin (callback) {
   return auth().onAuthStateChanged((x) => callback(x))
 }
 
-function pushAnswer ({ sender, answer, sentAt }) {
+function pushAnswer ({ sender, luckiness, sentAt }) {
   const ref = firebase.database().ref('/answerlog')
-  return ref.push({ sender, answer, sentAt })
+  return ref.push({ sender, luckiness, sentAt })
 
 }
 function pushChat ({ sender, message, sentAt }) { // Add chat
