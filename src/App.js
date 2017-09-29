@@ -5,11 +5,9 @@ import './App.css'
 import { BrowserRouter, Route } from 'react-router-dom'
 // Import page components
 import Menu from './Components/Menu'
-import Chat from './Pages/Chat'
-import About from './Pages/About'
-import RandomExam from './Pages/RandomExam'
-import Map from './Pages/Map'
-import MiniExam from './Pages/MiniExam'
+import Ranking from './Pages/Ranking'
+import Challenge from './Pages/Challenge'
+import Minigame from './Pages/Minigame'
 // End of page components
 import * as FBase from './services/firebase'
 import { Helmet } from 'react-helmet'
@@ -59,23 +57,19 @@ class App extends Component {
             />
             <div style={{ height: 20 }}></div>
             <Route
-              render={(props) => <RandomExam user={this.state.user} {...props} />}
-              path="/" />
+              render={(props) => <Ranking user={this.state.user} />}
+              path="/" 
+              exact
+              />
             <Route
               render={() => 
-                <Chat user={this.state.user} />
+                <Challenge user={this.state.user} />
               }
-              path="/chat" 
-              exact />
+              path="/challenge" 
+              />
             <Route
-              render={(props) => <About {...props} />}
-              path="/about" />
-            <Route
-              render={(props) => <Map {...props} />}
-              path="/map" />
-              <Route
-              render={(props) => <Map {...props} />}
-              path="/mini" />
+              render={(props) => <Minigame user={this.state.user}{...props} />}
+              path="/minigame" />
           </div>
         </BrowserRouter>
       </div>

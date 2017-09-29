@@ -3,3 +3,9 @@
   flex-direction: column;
   flex: 1;
 }
+
+button:active {
+  background-color: white;
+  color: black;
+  outline: 1px solid black;
+}
