@@ -32,9 +32,9 @@ function autoLogin (callback) {
   return auth().onAuthStateChanged((x) => callback(x))
 }
 
-function pushExam ({ sender, correct, sentAt }) {
+function pushExam ({ sender, correct, sentAt, easy, }) {
   const ref = firebase.database().ref('/examlog')
-  return ref.push({ sender, correct, sentAt })
+  return ref.push({ sender, correct, sentAt, easy, })
 }
 
 function pushAnswer ({ sender, luckiness, sentAt }) {

@@ -12,8 +12,8 @@ class Menu extends React.Component {
         <nav className="level is-mobile">
           <div className="level-left">
             <div className="level-item">
-              <p className="subtitle is-5">
-                🐝🙊
+              <p className="title is-1">
+                QUIZUUM🙊
               </p>
             </div>
           </div>
