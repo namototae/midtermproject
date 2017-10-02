@@ -41,6 +41,15 @@ class Ranking extends React.Component {
     </div>
   </div>
 </section>
+
+<nav className="breadcrumb is-centered" aria-label="breadcrumbs">
+  <ul>
+  <li className="is-active"><a href="#" aria-current="page" >My Gang</a></li>
+    <li><a href="#">Community</a></li>
+    <li><a href="#">Explore</a></li>
+  </ul>
+</nav>
+
 </div>
         <div className="ranking">
           { this.state.examLog && Object.keys(this.state.examLog).sort("correct").reverse().map((key, i) =>
@@ -64,7 +73,7 @@ class Ranking extends React.Component {
                   />
                 }
                 { !this.state.examLog[key].sender &&
-                  <span className="is-size-4">🤓</span>
+                  <span className="is-size-2">🤓</span>
                 }
          
         </figure>
@@ -89,11 +98,11 @@ class Ranking extends React.Component {
     </div>
 
     <div className="title is-4 media-right">
-    🔥ทำข้อสอบError 7 ข้อ  ได้ {this.state.examLog[key].correct} ข้อ
+    ทำข้อสอบError 7 ข้อ  ได้ {this.state.examLog[key].correct} ข้อ🔥
       </div>
       <div className="content">
       <span className="box">
-        <a>✌🏻</a><a> 🙏🏻</a> <a>😬 </a>
+        <a>✌🏻สู้สู้</a><a> 🙏🏻คาราวะ</a> <a>😬จึ๋ย</a>
         <a className="media-right">💬 commmemt</a>
         </span> 
     </div>

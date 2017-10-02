@@ -73,7 +73,7 @@ class Minigame extends Component {
         
       }
      this.setState({
-      //  luckiness:0,
+        luckiness:0,
        exam:0,
        correct:0,
       character:"",
@@ -110,22 +110,32 @@ class Minigame extends Component {
   render() {
     return (
       <div className="content">
-        <h1 className="title">
-          Random Exam
-        </h1>
+         <section className="hero is-warning">
+  <div className="hero-body">
+    <div className="container">
+      <h1 className="title">
+        ลองดิ่งดูสิมี 5 ข้อ
+      </h1>
+      <h2 className="subtitle">
+        เช็ดดวงของคุณวันนี้
+      </h2>
+    </div>
+  </div>
+</section>
+      
         <div>
-          <h2>ลองดิ่งข้อสอบดูซิมี5ข้อ</h2>
+         
           <p> ตอบไป  {this.state.exam} ข้อแล้ว</p>
           
           <button onClick={() => this._select(0)} className="button">ก.</button>
           <button onClick={() => this._select(1)} className="button">ข.</button>
           <button onClick={() => this._select(2)} className="button">ค.</button>
           <button onClick={() => this._select(3)} className="button">ง.</button>
-          
           <h2>เฉลย : {this.state.character} </h2>
-          <p> เดาถูก : {this.state.correct} </p>
-          <h2>ความโชคดีของคุณ : {this.state.luckiness} %</h2>
-          <h4> {this.state.result} </h4>
+          <div className= "is-size-1"> {this.state.result} </div>
+          <p> เดาถูก : {this.state.correct}/{this.state.exam} </p>
+          <h2>ความโชคดีของ { this.props.user && this.props.user.displayName} { !this.props.user && "คุณ"} : {this.state.luckiness} %</h2>
+          
         </div>
         <br/>
         <div>

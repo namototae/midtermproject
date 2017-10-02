@@ -35,8 +35,8 @@ class Challenge extends React.Component {
       )
     }
 
-    // enter(event){
-    //     if(event.keyCode == 13){
+    // enter(answer){
+    //     if(answer.keyCode == 13){
     //         this.setState({
     //             current: this.state.current + 1,
     //             isCurrentAnswered: false,
