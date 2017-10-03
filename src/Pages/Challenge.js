@@ -5,6 +5,8 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 
+ 
+
 
 class Challenge extends React.Component {
     
@@ -80,7 +82,7 @@ class Challenge extends React.Component {
                     <form ref={'answerForm'}>
                         <div className="control">
                         { this.state.quizes[this.state.current].choices.map((choice, i) =>
-                                <label className="button is-light is-focused container"  key={i}>
+                                <label className="button is-light is-focused container column-gap"  key={i}>
                                     <input type="radio" id="choice" value={i === this.state.quizes[this.state.current].correctChoice} name="answer" onClick={(answer) => {
                                         console.log(">>>>"+answer.target.value)
                                         if (answer.target.value === 'true') {    
@@ -146,7 +148,7 @@ class Challenge extends React.Component {
                     { this.state.isCurrentAnswered && this.state.current + 1 === this.state.quizes.length &&
                        <div>
                         <span>
-                        +{this.state.easy}🐷
+                        +2🐷
                         <Link to="/"><button className="button" 
                             onClick={() => {
                                 this.setState({easy : this.setState.easy+1})

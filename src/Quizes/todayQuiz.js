@@ -1,49 +1,49 @@
 const todayQuiz = [
     {
-        question: '1+1 equals =',
-        choices: ['3', '1', '5', '2'],
-        correctChoice: 3,
-        explanation: 'kode easy ... mai roo dai ngai'
-    },
-    {
-        question: '211x45211 =',
-        choices: ['9539521', '9485451', '95957641', '9445151'],
-        correctChoice: 0,
-        explanation: '55555'
-    },
-    {
-        question: 'คนโปรดของนะโม',
-        choices: ['คุณไซจู', 'คุณไซจู', 'คุณไซจู', 'คุณไซจู'],
+        question: 'จงหาคำว่า " อบอุ่น "',
+        choices: ['appetizing', 'appealing', 'tepid', 'savory'],
         correctChoice: 2,
-        explanation: 'yark kode'
+        explanation: 'ตอบข้อ ค'
+    },
+    {
+        question: 'จงหาคำว่า " ถ่อมตัว "',
+        choices: ['soar', 'skyrocket', 'humble', 'wing'],
+        correctChoice: 2,
+        explanation: 'ตอบข้อ ค'
+    },
+    {
+        question: 'จงหาคำว่า " ความไม่แน่นอน "',
+        choices: ['unusual', 'suspense', 'uncommon', 'extraordinary'],
+        correctChoice: 1,
+        explanation: 'ตอบ ข'
     },
     
     {
-        question: 'ข้อใดคือความหมายของ "oik"',
-        choices: ['คนน่ารังเกียจ', 'คนแก่', 'อุ๊ยตาย', 'องค์การ'],
+        question: 'จงหาคำว่า " กำลังเริ่ม "',
+        choices: ['incipient', 'abrogate', 'void', 'rescind'],
         correctChoice: 0,
-        explanation: 'yark kode'
+        explanation: 'ตอบ ก'
     }
     ,
     {
-        question: 'ความหมายของความว่าอิ๊คือข้อใดต่อไปนี้',
-        choices: ['อะไรหรอ', 'สงสัยจุง', 'เป็นเสียวหัวเราะชนิดหนึ่ง', 'เอ๊ะ'],
-        correctChoice: 3,
-        explanation: 'yark kode'
+        question: 'จงหาคำว่า " การปล่อยละเลย "',
+        choices: ['determination', 'inattention', 'concenter', 'converge'],
+        correctChoice: 1,
+        explanation: 'ตอบ ข'
     }
     ,
     {
-        question: 'ความหมายของความว่าอิ๊คือข้อใดต่อไปนี้',
-        choices: ['อะไรหรอ', 'สงสัยจุง', 'เป็นเสียวหัวเราะชนิดหนึ่ง', 'เอ๊ะ'],
-        correctChoice: 3,
-        explanation: 'yark kode'
+        question: 'จงหาคำว่า " ต้องการ "',
+        choices: ['imperil', 'jeopardize', 'crave', 'endanger'],
+        correctChoice: 2,
+        explanation: 'ตอบ ค'
     }
     ,
     {
-        question: 'ความหมายของความว่าอิ๊คือข้อใดต่อไปนี้',
-        choices: ['อะไรหรอ', 'สงสัยจุง', 'เป็นเสียวหัวเราะชนิดหนึ่ง', 'เอ๊ะ'],
-        correctChoice: 3,
-        explanation: 'yark kode'
+        question: 'จงหาคำว่า " อย่างเห็นได้ชัด "',
+        choices: ['hazardous', 'conspicuous', 'dangerous', 'perilous'],
+        correctChoice: 1,
+        explanation: 'ตอบ ข'
     }
 
 

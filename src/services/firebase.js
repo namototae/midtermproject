@@ -32,9 +32,19 @@ function autoLogin (callback) {
   return auth().onAuthStateChanged((x) => callback(x))
 }
 
-function pushExam ({ sender, correct, sentAt, easy, }) {
+function pushExam ({ sender, correct, sentAt, easy, reactions, comments }) {
   const ref = firebase.database().ref('/examlog')
-  return ref.push({ sender, correct, sentAt, easy, })
+  return ref.push({ sender, correct, sentAt, easy, reactions, comments })
+}
+function addReaction (key, action, val) {
+  return firebase.database().ref(`/markers/${key}/reactions/${action}`).set(val)
+}
+
+function addComment (key, comment = '') {
+  return firebase.database().ref(`/markers/${key}/comments`).push({
+    createdAt: new Date().getTime(),
+    content: comment
+  })
 }
 
 function pushAnswer ({ sender, luckiness, sentAt }) {
@@ -75,5 +85,7 @@ export {
   pushChat,
   pushAnswer,
   pushExam,
-  getAnswerLog
+  getAnswerLog,
+  addReaction,
+  addComment
 }

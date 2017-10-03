@@ -8,6 +8,7 @@ import Menu from './Components/Menu'
 import Ranking from './Pages/Ranking'
 import Challenge from './Pages/Challenge'
 import Minigame from './Pages/Minigame'
+import Me from './Pages/Me'
 // End of page components
 import * as FBase from './services/firebase'
 import { Helmet } from 'react-helmet'
@@ -66,6 +67,12 @@ class App extends Component {
                 <Challenge user={this.state.user} />
               }
               path="/challenge" 
+              />
+              <Route
+              render={() => 
+                <Me/>
+              }
+              path="/me" 
               />
             <Route
               render={(props) => <Minigame user={this.state.user}{...props} />}

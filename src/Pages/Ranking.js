@@ -84,11 +84,11 @@ class Ranking extends React.Component {
                   <span className="is-size-4">Mr.Secret</span>
                 }
         </p>
-        <p className="subtitle is-6">The nerd pony</p>
+        <p className="subtitle is-6">The nerd pony lv.5</p>
       </div>
       <div className="media-content">
         <p className="title is-4">🐎122 ข้อ</p>
-        <p className="subtitle is-6">Level 5</p>
+        <p className="subtitle is-6">10 more to next level</p>
       </div>
       <div className="media-content">
         <p className="title is-4"> ☘️1500</p>
@@ -98,11 +98,13 @@ class Ranking extends React.Component {
     </div>
 
     <div className="title is-4 media-right">
-    ทำข้อสอบError 7 ข้อ  ได้ {this.state.examLog[key].correct} ข้อ🔥
+    ทำข้อสอบVocab 7 ข้อ  ได้ {this.state.examLog[key].correct} ข้อ🔥
       </div>
       <div className="content">
       <span className="box">
-        <a>✌🏻สู้สู้</a><a> 🙏🏻คาราวะ</a> <a>😬จึ๋ย</a>
+        
+        
+        <a>✌🏻สู้สู้</a><a> 🙏🏻คาราวะ</a> <a>😬ยิ้มเจื่อน</a>
         <a className="media-right">💬 commmemt</a>
         </span> 
     </div>
