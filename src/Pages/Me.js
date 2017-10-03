@@ -35,7 +35,7 @@ class Me extends React.Component {
     </div>
   </div>
 </nav>
-
+<center className="title is-1">🐴</center>
 <input className="input" type="text" placeholder="+ Add Goal"/>
 
               </div>

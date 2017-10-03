@@ -33,9 +33,8 @@ class Menu extends React.Component {
     
       
       <div className="level-right">
-     
-            <p className="level-item"><Link to="/">👧 Ranking</Link></p>
-            <p className="level-item"><Link to="/me">🍑 Me</Link></p> 
+      <p className="level-item"><Link to="/me">🍑 Me</Link></p> 
+      <p className="level-item"><Link to="/">👧 Update</Link></p>
            <p className="level-item"><Link to="/challenge">🐙 Challenge</Link></p>
            <p className="level-item"><Link to="/minigame">🌈 Minigame</Link></p>
            <p className="level-item">
